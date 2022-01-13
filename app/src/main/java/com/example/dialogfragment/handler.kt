@@ -1,10 +1,8 @@
 package com.example.dialogfragment
 
 import android.content.ContentValues
-import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.widget.Toast
 import androidx.core.content.contentValuesOf
 
 const val DATABASE_NAME="userDB"
@@ -12,7 +10,7 @@ const val TABLE_NAME="user"
 const val COL_NAME="name"
 const val COL_DAY="day"
 const val COL_MON="month"
-class Handler(var context: Context):SQLiteOpenHelper(context, DATABASE_NAME,null,1) {
+class Handler(var context: MainActivity):SQLiteOpenHelper(context, DATABASE_NAME,null,1) {
     override fun onCreate(db: SQLiteDatabase?) {
         val createTable =
             "CREATE TABLE $TABLE_NAME($COL_NAME VARCHAR(100),$COL_DAY VARCHAR(100), $COL_MON VARCHAR(100))";
@@ -61,6 +59,7 @@ class Handler(var context: Context):SQLiteOpenHelper(context, DATABASE_NAME,null
 //                db.update(TABLE_NAME,cv, "month", arrayOf())//result.getString(result.getColumnIndex(COL_NAME),result.getString(result.getColumnIndex(COL_DAY)))
 
         db.update(TABLE_NAME, cv, null, null);
+
 
     }
 
